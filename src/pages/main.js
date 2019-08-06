@@ -7,20 +7,24 @@
  */
 
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
 import { connect } from "react-redux";
 
-import PlaceInput from "./src/components/PlaceInput/PlaceInput";
-import PlaceList from "./src/components/PlaceList/PlaceList";
-import PlaceDetail from "./src/components/PlaceDetail/PlaceDetail";
+import PlaceInput from "../components/PlaceInput/PlaceInput";
+import PlaceList from "../components/PlaceList/PlaceList";
+import PlaceDetail from "../components/PlaceDetail/PlaceDetail";
 import {
   addPlace,
   deletePlace,
   selectPlace,
   deselectPlace
-} from "./src/store/actions/index";
+} from "../store/actions";
 
-class App extends Component {
+class Main extends Component {
+  static navigationOptions = {
+    title: "Teste"
+  };
+
   placeNameChangedHandler = val => {
     this.setState({
       placeName: val
@@ -57,6 +61,10 @@ class App extends Component {
           places={this.props.places}
           onItemSelected={this.placeSelectedHandler}
         />
+        <Button
+          title="Go to Details"
+          onPress={() => this.props.navigation.navigate("Details")}
+        />
       </View>
     );
   }
@@ -91,4 +99,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(Main);

@@ -19,8 +19,7 @@ const reducer = (state = initialState, action) => {
           key: Math.random().toString(),
           name: action.placeName,
           image: {
-            uri:
-              "https://img.theculturetrip.com/x/smart/wp-content/uploads/2019/04/shutterstock_421013719.jpg"
+            uri: "http://www.aboutbrasil.com/modules/images/626.jpg"
           }
         })
       };
